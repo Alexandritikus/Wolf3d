@@ -6,22 +6,41 @@
 /*   By: oshudria <oshudria@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 20:37:51 by oshudria          #+#    #+#             */
-/*   Updated: 2017/12/01 21:53:00 by oshudria         ###   ########.fr       */
+/*   Updated: 2018/04/30 20:54:49 by oshudria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "screen.h"
+#include "wolf3d.h"
 
 int	main(void)
 {
-    t_screen *screen;
+	t_game	*wolf;
 
-    if ((screen = create_screen()) == NULL)
-        return 1;
-
-    int i = 1000000000;
-    while (--i > 0);
-    delete_screen(screen);
-
+	if ((wolf = start_game()) == NULL)
+	{
+		ft_putendl("Fail to start the game");
+		return (1);
+	}
+	game_process(wolf);
+	end_game(wolf);
 	return (0);
+/*    bool w = true;
+    while (w)
+    {
+        SDL_SetRenderDrawColor(screen->m_renderer, 255, 0, 0, 255);
+        SDL_RenderClear(screen->m_renderer);
+        SDL_RenderPresent(screen->m_renderer);
+
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                w = false;
+//                delete_screen(screen);
+            }
+        }
+    }
+    delete_screen(screen);
+*/
 }
